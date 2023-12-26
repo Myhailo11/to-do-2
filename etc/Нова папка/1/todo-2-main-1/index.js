@@ -12,7 +12,7 @@ const todoHandler = () => {
       id:rundomNumber,
       text:dataText,
       completed:false
-
+      
     }
     tasks.push(task)
     input.value=""
@@ -30,23 +30,20 @@ btn.addEventListener("click",(event)=>{
 
 
 function renderTodo(items) {
-  const marcup = items.map((item)=>{
+  const marcup = items.
+  map((item)=>{
     return `<li>
-    <label class="label">
-    <input type="checkbox" class="checkbox" checked=${item.completed}>
-    <span class="custom__radio"></span>
-    </label>
+    <input type="checkbox" ${item.completed}>
     <p>${item.text}</p>
     <button onclick="removeTodo(${item.id})">Видалити</button>
     </li>`
   })
   .join("")
   console.log(marcup);
-  list.innerHTML=marcup;
+  list.innerHTML=marcup
 }
 
-window.removeTodo=function (id) {
+function removeTodo(id) {
   const filteredTasks = tasks.filter((item)=>item.id!==id)
   tasks=filteredTasks
-  renderTodo(tasks)
 }
