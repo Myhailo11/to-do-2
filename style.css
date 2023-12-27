@@ -1,3 +1,14 @@
+.input__form {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input {
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
 button {
     background-color: darkorange;
     border-radius: 5px;
@@ -33,10 +44,9 @@ label {
     height: 30px;
     /* border: 1px solid rgb(0, 0, 0); */
     border-radius: 50%;
-}
+    padding-left: 5px;
+    padding-right: 10px;
 
-.input {
-    padding-left: 20px;
 }
 
 .custom__radio {
