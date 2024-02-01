@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector(".list");
   const input = document.querySelector(".input");
   const btn = document.querySelector(".btn");
+  const resetBtn = document.querySelector(".resetBtn");
 
- localStorage.setItem("tasks", []);
+
   console.log(`Tasks form local Storage: `, localStorage.getItem("tasks"));
   //If we have no saved tasks (NULL) - set tasks array to empty array!
-  let tasks = localStorage.getItem("tasks") ? localStorage.getItem("tasks") : [];
+  // let tasks = localStorage.getItem("tasks") ? localStorage.getItem("tasks") : [];
+  let tasks = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
   console.log(`Local tasks array: `,tasks);
 
   console.log(`Initial tasks Array length: `,tasks.length);
@@ -37,6 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
   //Complete the task
   //Will be here
 
+  resetBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+     //localStorage.setItem("tasks", []);
+     localStorage.clear();
+     tasks = [];
+    todoHandler();
+    renderTodo(tasks);
+  });
+
 //Functional section  
   const todoHandler = () => {
     if (input.value.trim() !== "") {
@@ -49,15 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
         completed: isCompleted
       };
       tasks.push(task);
-      //Saving Array to the local Storage
-      localStorage.setItem("tasks", tasks);
-      //console.log(`Array from Local Storage:`, localStorage.getItem("tasks"));
       input.value = "";
     }
     console.log(tasks);
   }
 
-
+//items - input array of objects
 function renderTodo(items) {
   const marcup = items.map((item) => {
     return `<li>
@@ -71,6 +79,10 @@ function renderTodo(items) {
   }).join("");
   console.log(marcup);
   list.innerHTML = marcup;
+      //Saving Array to the local Storage
+      localStorage.setItem("tasks", JSON.stringify(items));
+      //console.log(`Array from Local Storage:`, localStorage.getItem("tasks"));
+
 }
 
 
