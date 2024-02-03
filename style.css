@@ -1,5 +1,5 @@
 .input__form {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
 }
@@ -28,15 +28,11 @@ li {
     margin-bottom: 5px;
 }
 
-li input:checked~ .p {
-    text-decoration: line-through red;
-}
-
 p {
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    flex-grow:1;
+    flex-grow: 1;
 }
 
 label {
@@ -51,15 +47,21 @@ label {
 
 .custom__radio {
     position: absolute;
-    width:30px;
-    height:30px;
-    border:2px solid #333;
-    border-radius:50%;
-    margin:0.5px;
-    cursor:pointer;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin: 0.5px;
+    cursor: pointer;
 }
 
-/* .custom__radio::before {
+.checkbox {
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.custom__radio::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -70,37 +72,21 @@ label {
     border-radius: 50%;
     background-color: darkorange;
     opacity: 0;
-} */
-
-.checkbox {
-    width:0;
-    height:0;
-    position:absolute;
 }
 
-.custom__radio::before {
-    content:"";
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color:darkorange;
-    opacity:0;
+.checkbox:checked+.custom__radio::before {
+    opacity: 1;
 }
 
-.checkbox:checked+.custom__radio::before{
-    opacity:1;
+.completed {
+    text-decoration: line-through red;
 }
 
-/* label{
-    width:30px;
-    height:30px;
-    border:1px solid rgb(0, 0, 0);
-    border-radius:50%;
-} */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
 
-/* li input [type="checkbox"]:checked{
-} */
+    select:focus,
+    textarea:focus,
+    input:focus {
+        font-size: 16px;
+    }
+}
